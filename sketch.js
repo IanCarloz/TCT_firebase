@@ -36,7 +36,11 @@ function setup(){
 }
 
 function gotData(data) {
-  console.log(data.val());
+  // console.log(data.val());
+  var scores = data.val();
+  var keys = Object.keys(scores);
+  console.log(keys);
+
 }
 
 function errData(err) {
