@@ -36,7 +36,7 @@ function setup(){
 }
 
 function gotData(data) {
-  console.log(data);
+  console.log(data.val());
 }
 
 function errData(err) {
