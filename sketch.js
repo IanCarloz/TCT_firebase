@@ -7,13 +7,16 @@ var database;
 
 function setup(){
   canvas = createCanvas(100, 100);
+  canvas.parent('game');
   score = 0;
-  createP('Click the button to get points and the canvas to reset the score.');
+  createP('Click the button to get points and the canvas to reset the score.').parent('game');
   button = createButton('click');
+  button.parent('game');
   button.mousePressed(increaseScore);
-  // canvas.mousePressed(resetScore);
   initialInput = createInput('initials');
+  initialInput.parent('game');
   submitButton = createButton('submit');
+  submitButton.parent('game');
   submitButton.mousePressed(submitScore);
 
   var config = {
@@ -26,11 +29,6 @@ function setup(){
   };
   firebase.initializeApp(config);
   database = firebase.database();
-  // console.log(firebase);
-  // var data = {
-  //   name: "DTS",
-  //   score: 123
-  // }
   var ref = database.ref('scores');
   ref.on('value', gotData, errData);
 }
@@ -39,15 +37,12 @@ function gotData(data) {
 
   var scorelistings = selectAll('.scorelisting');
   for (var i=0; i<scorelistings.length;  i++) {
-    scorelistings[i].remove(); 
+    scorelistings[i].remove();
 
   }
 
-  // console.log(data.val());
   var scores = data.val();
   var keys = Object.keys(scores);
-
-  // console.log(keys);
 
   for (var i = 0; i < keys.length; i++) {
     var k = keys[i];
@@ -74,16 +69,13 @@ function submitScore() {
   }
   console.log(data);
   var ref = database.ref('scores');
-  ref.push(data);
+  var result = ref.push(data);
+  // console.log(result.key);
 }
 
 function increaseScore() {
   score++;
 }
-
-// function resetScore() {
-//   score = 0;
-// }
 
 function draw() {
   background(0);
