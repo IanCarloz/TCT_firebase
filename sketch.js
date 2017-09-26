@@ -36,6 +36,13 @@ function setup(){
 }
 
 function gotData(data) {
+
+  var scorelistings = selectAll('.scorelisting');
+  for (var i=0; i<scorelistings.length;  i++) {
+    scorelistings[i].remove(); 
+
+  }
+
   // console.log(data.val());
   var scores = data.val();
   var keys = Object.keys(scores);
@@ -49,7 +56,8 @@ function gotData(data) {
     // console.log('initials: '+initials+', score: '+ score);
     // console.log(initials, score);
     var li = createElement('li',  initials+": "+score);
-    li.parent('scorelist');  
+    li.class('scorelisting');
+    li.parent('scorelist');
   }
 
 }
