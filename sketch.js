@@ -49,7 +49,7 @@ function gotData(data) {
     // console.log('initials: '+initials+', score: '+ score);
     // console.log(initials, score);
     var li = createElement('li',  initials+": "+score);
-    li.parent('scorelist'); 
+    li.parent('scorelist');  
   }
 
 }
