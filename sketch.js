@@ -31,6 +31,17 @@ function setup(){
   //   name: "DTS",
   //   score: 123
   // }
+  var ref = database.ref('scores');
+  ref.on('value', gotData, errData);
+}
+
+function gotData(data) {
+  console.log(data);
+}
+
+function errData(err) {
+  console.log('Error!');
+  console.log(err);
 }
 
 function submitScore() {
